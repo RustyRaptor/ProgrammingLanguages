@@ -1,4 +1,4 @@
-FLAGS = -O0 -Wextra -pedantic 
+FLAGS = -O0 -Wextra -Wall -pedantic 
 
 all: main
 
