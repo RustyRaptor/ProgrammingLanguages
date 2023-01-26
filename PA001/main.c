@@ -1,6 +1,9 @@
 #include "main.h"
+
 int main(int argc, char const *argv[])
 {
-    printf("Hello World\n");
-    return 0;
+    int arr[50] = {0};
+
+    int *name_arr = myNameArray();
 }
+
