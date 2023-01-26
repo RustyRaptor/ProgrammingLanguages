@@ -1,7 +1,7 @@
 from binascii import hexlify
 
 
-name = "Ziad Arafat" # The string you wanna print
+name = "John Wick" # The string you wanna print
 
 """
 Converts an input string to it's respective hex in Little endian as a string
