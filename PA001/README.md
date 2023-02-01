@@ -1,8 +1,27 @@
-Programming Assignment #1 -- Simple example of type casting and pointers:
+
+## Usage
+1. Clean, build, and run
+```bash
+make test
+```
+
+2. build
+```bash
+make
+```
+
+3. Clean binaries
+```
+make clean
+```
+---
+
+### Programming Assignment #1
+#### Simple example of type casting and pointers:
 
  
 
-Useful link -- https://www.asciitable.com/
+Useful link <https://www.asciitable.com/>
 
  
 
@@ -21,7 +40,7 @@ The idea, is to have your program allocate a chunk of data via and array of inte
 Your program should have structure similar to:
 
  
-
+```c
 main()
 {
 
@@ -41,20 +60,16 @@ printf("My name is %s\n",S);
 
 } 
 
- 
+```
 
 Requirements:
 
-1)  Your code shall be properly commented include name , date, input, output, preconditions and postconditions
-
-2) A screen shot of you program running
-
-3)  Answers to the following questions
-
-   a)   in what memory segment is the array allocated?  Give proof that your answer is correct
-   b)  in what memory segment is the pointer to the array allocated? Give proof that your answer is correct
-   c) how can you make your array be in  another segment?  Show how you did this and show proof
-   d)  What endianness was the computer you ran your problem on?
-   e)  Why is there a difference between little and big endian?   Which one is better?  Provide a source
-
-4)  Do you we need to fill the entire last interger with '0', or can we just fill in the last byte with '0'.  Show an experiment that shows this (make sure you pay attention to endianness and ensure that your other bytes are NOT 0 when doing the experiment.
+1. Your code shall be properly commented include name , date, input, output, preconditions and postconditions
+2. A screen shot of you program running
+3. Answers to the following questions
+   1. in what memory segment is the array allocated?  Give proof that your answer is correct
+   2. in what memory segment is the pointer to the array allocated? Give proof that your answer is correct
+   3. how can you make your array be in  another segment?  Show how you did this and show proof
+   4. What endianness was the computer you ran your problem on?
+   5. Why is there a difference between little and big endian?   Which one is better?  Provide a source
+4. Do you we need to fill the entire last interger with '0', or can we just fill in the last byte with '0'.  Show an experiment that shows this (make sure you pay attention to endianness and ensure that your other bytes are NOT 0 when doing the experiment.
