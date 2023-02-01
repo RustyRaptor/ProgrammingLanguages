@@ -39,7 +39,8 @@ Returns: Integer pointer to a new array containing the correct bytes
 to represent Ziad Arafat in ascii and stored in Little Endian format. 
 */
 int* my_name_array() {
-    int *name_arr = (int *)malloc(11);
+    // allocate a correct size integer array in help
+    int *name_arr = (int *)malloc(11); 
 
     name_arr[0] = 0x6461695a; // Z,i,a,d -> d,a,i,Z
     name_arr[1] = 0x61724120; //  ,A,r,a -> a,r,A,  
