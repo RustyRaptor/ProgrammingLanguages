@@ -14,6 +14,14 @@ make
 ```
 make clean
 ```
+
+## Usage Python Name Generator
+This python script `printit.py` will print out the array assignment lines
+necessary to create a given string's bytes in little endian. 
+
+1. Replace the name in the file with your own string/name
+2. `python printit.py`
+3. Save yourself the headache. 
 ---
 
 ### Programming Assignment #1
