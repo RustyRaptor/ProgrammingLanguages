@@ -1,4 +1,8 @@
 # Report
+## Ziad Arafat
+### 02/21/2023
+### Programming Languages PA 2
+
 In our code, we utilized a function call after an `AND` operator to determine whether or not short-circuit evaluation is used in a given programming language. If the language uses short-circuit evaluation, the `print_answer()` function will not be executed and the output will be "`If you only see this then we DO have short circuit evaluation`". However, if the language does not use short-circuit evaluation, the `print_answer()` function will be executed and the output will be "`We DO NOT have short-circuit evaluation!`" followed by "`If you only see this then we DO have short circuit evaluation`". By placing `print_answer()` as the second operand in the `AND` expression, we took advantage of the fact that the second operand will only be evaluated if the first operand is true. In this way, we were able to determine whether or not short-circuit evaluation is used in a given programming language.
 
 
