@@ -1,4 +1,4 @@
-module mymodule
+module string_to_real
   implicit none
 
   ! Define the string_to_real_array function
@@ -37,5 +37,5 @@ pure function string_to_real_array(str, n) result(arr)
 end function string_to_real_array
 
 
-end module mymodule
+end module string_to_real
 

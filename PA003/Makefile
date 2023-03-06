@@ -1,24 +1,27 @@
 FC = gfortran -std=gnu
 SRC = gaussian_elimination.f90
 EXEC = gaussian_elimination
-MODULE = mymodule.mod
-MODF = mymodule.f90
+MODULE = string_to_real.mod
+MODF = string_to_real.f90
 RM = rm -f
+OBJMAIN = gaussian_elimination.o
+OBJMOD = string_to_real.o
+
+# Variables so its easy to make changes if I need to (it ended up being helpful)
 
 all: $(EXEC)
 
-$(EXEC): $(SRC) $(MODULE)
-	$(FC) -c $(SRC)
-	gfortran mymodule.o gaussian_elimination.o -o gaussian_elimination
-	# $(FC) -o $(EXEC) $(SRC)
+$(EXEC): $(SRC) $(MODULE) $(OBJMOD) $(OBJMAIN)
+	$(FC) $(OBJMOD) $(OBJMAIN) -o $(EXEC)
 	
+$(OBJMAIN): $(SRC)
+	$(FC) -c $(SRC)
 
 $(MODULE): $(MODF)
 	$(FC) -c $(MODF)
 
 clean:
-	$(RM) *.o *.mod
+	$(RM) $(OBJMAIN) $(OBJMOD) $(MODULE) $(EXEC)
 
-test: clean gaussian_elimination
-	# ./gaussian_elimination 3 4 1 2 3 4 5 6 7 8 9 10 11 12
-	./gaussian_elimination 3 4 "matrix.txt"
+test: clean $(EXEC)
+	./$(EXEC) 3 4 "matrix.txt"

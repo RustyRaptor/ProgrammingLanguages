@@ -1,7 +1,28 @@
+! Ziad Arafat
+! 2023-03-06
+
+! The performance of compiled and interpreted languages has been a topic of 
+! interest in programming languages research for decades. While compiled languages
+! are generally known for their faster runtime performance, interpreted languages
+! offer advantages in terms of ease of use and portability. In this experiment, 
+! we aimed to explore the practical performance of compiled and interpreted 
+! languages in implementing Gaussian elimination with back substitution, a widely 
+! used numerical algorithm. We implemented the algorithm in Python and FORTRAN, 
+! and tested their runtime performance on matrices of varying size, with and 
+! without the use of numpy. The experiment provides insights into the practical 
+! trade-offs between compiled and interpreted languages in the context of 
+! numerical algorithms.
+
+! This program takes the height and width of the matrix as input.
+! It also takes a filename for a file containing the items in the matrix on one
+! line separated by spaces. They must be floats.
+
+! Usage: ./gaussian_elimination height width filename
+
 program gaussian_elimination
 
         ! Module with a function for reading a string of floats
-        use mymodule
+        use string_to_real
 
         implicit none
         integer :: i, j, n, m, index_of_input, s
