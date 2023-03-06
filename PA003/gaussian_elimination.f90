@@ -1,5 +1,6 @@
 program read_matrix_from_args
         use mymodule
+        use iso_fortran_env
         implicit none
         integer :: i, j, n, m, index_of_input, s
         ! real :: next_argument_real
@@ -10,6 +11,7 @@ program read_matrix_from_args
         real, dimension(:,:), allocatable :: matrix
         real, dimension(:), allocatable :: input_list
         REAL,DIMENSION(:), allocatable:: result_vector
+        real(kind=8) :: elapsed_time, start_time, end_time
         
         file_unit = 10
         ! Get the number of rows and columns from the command line
@@ -47,7 +49,13 @@ program read_matrix_from_args
         allocate(input_list(n*m))
         allocate(result_vector(n))
         
+        
+        call cpu_time(start_time)
+        print *, "BEGIN"
         input_list = string_to_real_array(input_array, n*m)
+        call cpu_time(end_time)
+        elapsed_time = end_time - start_time
+        print *, "Elapsed time:", elapsed_time, "seconds"
 
         ! write (*, '(f20.5)') input_list(1)
         
@@ -58,8 +66,8 @@ program read_matrix_from_args
         do i = 1, n
                 do j = 1, m
                         matrix(i,j) = input_list(index_of_input)
-                        ! write ( * , '(f20.5)', advance="no") matrix(i,j)
-                        ! write ( * , '(f20.5)') input_list(index_of_input)
+                        !write ( * , '(f0.20)', advance="no") matrix(i,j)
+                        !write ( * , '(f0.20)') input_list(index_of_input)
                         index_of_input = index_of_input + 1
                 end do
         end do
