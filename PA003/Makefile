@@ -1,33 +1,24 @@
-FLAGS = -O0 -Wextra -Wall -pedantic -c
+FC = gfortran -std=gnu
+SRC = gaussian_elimination.f90
+EXEC = gaussian_elimination
+MODULE = mymodule.mod
+MODF = mymodule.f90
+RM = rm -f
 
-all: main_ada main_bash main_php main_perl
+all: $(EXEC)
 
-main_ada: main_ada.adb
-	# Running Ada Code
-	gcc -c main_ada.adb
-	gnatmake --GNATBIND=gnatbind --GNATLINK=gnatlink main_ada
-	./main_ada
-	# =====================
+$(EXEC): $(SRC) $(MODULE)
+	$(FC) -c $(SRC)
+	gfortran mymodule.o gaussian_elimination.o -o gaussian_elimination
+	# $(FC) -o $(EXEC) $(SRC)
+	
 
-main_bash: main_bash.sh
-	# Running Bash Code
-	bash main_bash.sh
-	# =====================
-
-main_php: main_php.php
-	# Running PHP Code
-	php main_php.php
-	# =====================
-main_perl: main_perl.pl
-	# Running PHP Code
-	perl main_perl.pl
-	# =====================
+$(MODULE): $(MODF)
+	$(FC) -c $(MODF)
 
 clean:
-	rm -f main_ada main_ada.o main_ada.ali
+	$(RM) *.o *.mod
 
-test:
-	make clean
-	make
-
-	./main
+test: clean gaussian_elimination
+	# ./gaussian_elimination 3 4 1 2 3 4 5 6 7 8 9 10 11 12
+	./gaussian_elimination 3 4 "matrix.txt"
