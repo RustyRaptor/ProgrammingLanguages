@@ -1,0 +1,5 @@
+*.o
+*.mod
+gaussian_elimination
+matrix.txt
+test.txt
