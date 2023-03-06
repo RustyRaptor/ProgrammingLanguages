@@ -1,9 +1,10 @@
-program read_matrix_from_args
+program gaussian_elimination
+
+        ! Module with a function for reading a string of floats
         use mymodule
-        use iso_fortran_env
+
         implicit none
         integer :: i, j, n, m, index_of_input, s
-        ! real :: next_argument_real
         character (len=128):: nchar, mchar, next_argument
         character (len=9999999):: input_array
         character (len=2048) :: file_name
@@ -15,17 +16,20 @@ program read_matrix_from_args
         
         file_unit = 10
         ! Get the number of rows and columns from the command line
-        if (command_argument_count() < 3) then
-                print *, "Usage: read_matrix_from_args n m\n"
+        if (command_argument_count() /= 3) then
+                print *, "Usage: gaussian_elimination height width filename\n"
                 stop
         endif
 
+        ! get the width and height
         call getarg(1, nchar)
         call getarg(2, mchar)
 
+        ! convert them to integers
         read(nchar, *) n
         read(mchar, *) m
 
+        ! get the filename
         call getarg(3, file_name)
 
         ! Open the file
@@ -37,9 +41,6 @@ program read_matrix_from_args
 
         ! Determine the size of the file
         inquire(unit=file_unit, size=file_size) 
-        ! Allocate memory for the file contents
-        ! allocate(input_array(file_size))
-
 
         ! Read the file into the string
         read(file_unit, '(a)', iostat=status) input_array
@@ -50,24 +51,18 @@ program read_matrix_from_args
         allocate(result_vector(n))
         
         
-        ! call cpu_time(start_time)
-        ! print *, "BEGIN"
+        ! Turn the string of numbers into an array of reals
         input_list = string_to_real_array(input_array, n*m)
-        ! call cpu_time(end_time)
-        ! elapsed_time = end_time - start_time
-        ! print *, "Elapsed time:", elapsed_time, "seconds"
 
-        ! write (*, '(f20.5)') input_list(1)
         
         
 
-        index_of_input = 1
+        
         ! Read values from the file string into the matrix
+        index_of_input = 1
         do i = 1, n
                 do j = 1, m
                         matrix(i,j) = input_list(index_of_input)
-                        !write ( * , '(f0.20)', advance="no") matrix(i,j)
-                        !write ( * , '(f0.20)') input_list(index_of_input)
                         index_of_input = index_of_input + 1
                 end do
         end do
@@ -88,10 +83,14 @@ program read_matrix_from_args
                 result_vector(i) = s/matrix(i,i)
         end do
         
-!   ! Deallocate the matrix
-        ! deallocate(matrix)
-        ! close(file_unit)
-        ! deallocate(input_list)
-end program read_matrix_from_args
+        ! Deallocate the matrix
+        deallocate(matrix)
+        ! Close the file 
+        close(file_unit)
+        ! Deallocate the input array
+        deallocate(input_list)
+        ! Deallocate the result vector 
+        deallocate(result_vector)
+end program gaussian_elimination
 
 
