@@ -50,12 +50,12 @@ program read_matrix_from_args
         allocate(result_vector(n))
         
         
-        call cpu_time(start_time)
-        print *, "BEGIN"
+        ! call cpu_time(start_time)
+        ! print *, "BEGIN"
         input_list = string_to_real_array(input_array, n*m)
-        call cpu_time(end_time)
-        elapsed_time = end_time - start_time
-        print *, "Elapsed time:", elapsed_time, "seconds"
+        ! call cpu_time(end_time)
+        ! elapsed_time = end_time - start_time
+        ! print *, "Elapsed time:", elapsed_time, "seconds"
 
         ! write (*, '(f20.5)') input_list(1)
         
