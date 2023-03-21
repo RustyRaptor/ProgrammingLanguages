@@ -18,39 +18,35 @@ def sanitized_string(dirty_string):
         
         return cleaned_string
 
-def main():
-        parser = argparse.ArgumentParser(
-                description='A program to clean a file based on a specific \
-                        pattern'
-        )
-        parser.add_argument(
-                'input_file_path',
-                type=str,
-                help='path to a input file to be cleaned'
-        )
-        parser.add_argument(
-                '-o', '--output_file_path',
-                type=str,
-                help='path to an output file if applicable',
-                default=None
-        )
-        
-        args = parser.parse_args()
-        
-        if args.output_file_path is not None:
-                with (open(args.input_file_path, 'r') as input_file,
-                open(args.output_file_path, 'w') as output_file):
-                        
-                        for dirty_line in input_file:
-                                sanitized_line = sanitized_string(dirty_line)
-                                output_file.write(sanitized_line)
-        else:
-                with open(args.input_file_path, 'r') as input_file:
-                        for dirty_line in input_file:
-                                sanitized_line = sanitized_string(dirty_line)
-                                print(sanitized_line)
-        
-        
+# MAIN
+parser = argparse.ArgumentParser(
+        description='A program to clean a file based on a specific \
+                pattern'
+)
+parser.add_argument(
+        'input_file_path',
+        type=str,
+        help='path to a input file to be cleaned'
+)
+parser.add_argument(
+        '-o', '--output_file_path',
+        type=str,
+        help='path to an output file if applicable',
+        default=None
+)
 
-if __name__ == '__main__':
-        main()
+args = parser.parse_args()
+
+if args.output_file_path is not None:
+        with open(args.input_file_path, 'r') as input_file, \
+        open(args.output_file_path, 'w') as output_file:
+                
+                for dirty_line in input_file:
+                        sanitized_line = sanitized_string(dirty_line)
+                        output_file.write(sanitized_line)
+else:
+        with open(args.input_file_path, 'r') as input_file:
+                for dirty_line in input_file:
+                        sanitized_line = sanitized_string(dirty_line)
+                        print(sanitized_line)
+
