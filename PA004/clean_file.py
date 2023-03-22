@@ -4,9 +4,6 @@ import argparse
 import re
 
 # Constants
-CONTROL_B = '\x02'
-CONTROL_C = '\x03'
-CARRIAGE_RET = '\n'
 CORRUPTION_REGEX = r'\x03(?:\x03|(?:(?![\x0A\x02]).)*\x0A)*?(?:(?![\x0A\x02]).)*\x02'
 
 
