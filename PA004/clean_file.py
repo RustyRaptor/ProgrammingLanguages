@@ -6,12 +6,16 @@ import re
 # Constants
 CONTROL_B = '\x02'
 CONTROL_C = '\x03'
-CARRIAGE_RET = '\r'
+CARRIAGE_RET = '\n'
+CORRUPTION_REGEX = r'\x03(?:\x03|(?:(?![\x0A\x02]).)*\x0A)*?(?:(?![\x0A\x02]).)*\x02'
+
 
 
 def sanitized_string(dirty_string):
+        pattern = re.compile(CORRUPTION_REGEX, re.DOTALL)
+        # pattern = CORRUPTION_REGEX
         cleaned_string = re.sub(
-                rf'{CONTROL_C}(\r{0,4}{CONTROL_C}*?)*{CONTROL_B}',
+                pattern,
                 "", 
                 dirty_string
         )
@@ -40,13 +44,11 @@ args = parser.parse_args()
 if args.output_file_path is not None:
         with open(args.input_file_path, 'r') as input_file, \
         open(args.output_file_path, 'w') as output_file:
-                
-                for dirty_line in input_file:
-                        sanitized_line = sanitized_string(dirty_line)
-                        output_file.write(sanitized_line)
+                dirty_text = input_file.read()
+                sanitized_text = sanitized_string(dirty_text)
+                output_file.write(sanitized_text)
 else:
         with open(args.input_file_path, 'r') as input_file:
-                for dirty_line in input_file:
-                        sanitized_line = sanitized_string(dirty_line)
-                        print(sanitized_line)
-
+                dirty_text = input_file.read()
+                sanitized_text = sanitized_string(dirty_text)
+                print(sanitized_text, end="")
