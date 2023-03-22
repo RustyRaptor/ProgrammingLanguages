@@ -5,9 +5,6 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class CleanFile {
-    private static final String CONTROL_B = "\u0002";
-    private static final String CONTROL_C = "\u0003";
-    private static final String CARRIAGE_RET = "\n";
     private static final String CORRUPTION_REGEX = "\\x03(?:\\x03|(?:(?![\\x0A\\x02]).)*\\x0A)*?(?:(?![\\x0A\\x02]).)*\\x02";
 
     public static void main(String[] args) {
