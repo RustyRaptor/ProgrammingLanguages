@@ -1,0 +1,10 @@
+*.o
+*.mod
+gaussian_elimination
+matrix.txt
+# test.txt
+out.txt
+out_python.txt
+out_java.txt
+out_perl.txt
+.ipynb_checkpoints
