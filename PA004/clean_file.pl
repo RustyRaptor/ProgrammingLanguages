@@ -32,7 +32,7 @@ my $input_file_path;
 my $output_file_path;
 
 # Parse command line options
-``
+
 my $result = GetOptions(
         'input_file_path=s'  => \$input_file_path,
         'output_file_path=s' => \$output_file_path,
