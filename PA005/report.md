@@ -1,5 +1,8 @@
 # Scope binding. 
 
+### Ziad Arafat
+
+#### Problem Description
 In this experiment we are testing to see if we can determine what kind of binding Javascript uses. Our code has multiple variables and nested functions that will help demonstrate. 
 There are 3 possible cases. 
 
@@ -9,6 +12,8 @@ There are 3 possible cases.
 
 3. **Ad-hoc binding**: In ad-hoc binding, the value of `x` would be determined based on specific rules or conditions. For example, a developer might choose to bind `x` based on a particular condition or flag. The output would depend on the specific implementation and rule defined for ad-hoc binding.
 
+#### Output
 ![Output of Program](./jsoutput.png)
 
+#### Conclusion
 In JavaScript, the binding behavior is closest to **deep binding**. When `sub2` is called within `sub4`, it references the value of `x` from the scope where it was originally defined (i.e., `sub1`). Therefore, when running this code, the output is `1`.
