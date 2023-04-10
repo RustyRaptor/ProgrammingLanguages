@@ -1,27 +1,14 @@
-FC = gfortran -std=gnu
-SRC = gaussian_elimination.f90
-EXEC = gaussian_elimination
-MODULE = string_to_real.mod
-MODF = string_to_real.f90
-RM = rm -f
-OBJMAIN = gaussian_elimination.o
-OBJMOD = string_to_real.o
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
 
 # Variables so its easy to make changes if I need to (it ended up being helpful)
 
-all: $(EXEC)
-
-$(EXEC): $(SRC) $(MODULE) $(OBJMOD) $(OBJMAIN)
-	$(FC) $(OBJMOD) $(OBJMAIN) -o $(EXEC)
-	
-$(OBJMAIN): $(SRC)
-	$(FC) -c $(SRC)
-
-$(MODULE): $(MODF)
-	$(FC) -c $(MODF)
-
-clean:
-	$(RM) $(OBJMAIN) $(OBJMOD) $(MODULE) $(EXEC)
-
-test: clean $(EXEC)
-	./$(EXEC) 3 4 "matrix.txt"
+all: test
+test: concurrency.py
+	@echo "${green}For N = 4${reset}"
+	python3 concurrency.py 4
+	@echo "${green}For N = 8${reset}"
+	python3 concurrency.py 8
+	@echo "${green}For N = 16${reset}"
+	python3 concurrency.py 16

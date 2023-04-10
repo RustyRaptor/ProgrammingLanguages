@@ -70,25 +70,24 @@ def main():
         parser.add_argument('integer', type=int, help='An integer value')
 
         args = parser.parse_args()
-        print(f"The provided integer is: {args.integer}")
-        print(f"The provided integer is: {args.integer}")
+        n = args.integer
+        
         # Task 1 
         matrix = generate_matrix(n)
 
         # Task 2 (without threads)
-        start_time1 = time.time()
+        start_time1 = time.perf_counter()
         max_val, min_val, avg = find_stats(matrix)
-        end_time1 = time.time()
+        end_time1 = time.perf_counter()
         time_taken1 = end_time1 - start_time1
-
-        print("Without threads:")
-        print(f"Max: {max_val}")
-        print(f"Min: {min_val}")
-        print(f"Average: {avg}")
-        print(f"Time taken: {time_taken1} seconds")
+        print("Task 2:")
+        print(f"Max value: {max_val}")
+        print(f"Min value: {min_val}")
+        print(f"Average value: {avg}")
+        print(f"Time taken to compute max, min, and average: {time_taken1*1000} milliseconds")
 
         # Task 3 (with threads)
-        start_time2 = time.time()
+        start_time2 = time.perf_counter()
 
         # ThreadPoolExecutor will get the results from the threaded function 
         # calls and store it in results. 
@@ -96,19 +95,19 @@ def main():
                 results = list(executor.map(
                         find_stats_thread, [matrix] * n, range(n)))
 
-        # Get the max, min, and avg values from the results which are a collection
-        # of results for each row the matrix. 
+        # Get the max, min, and avg values from the results which are a 
+        # collection of results for each row the matrix. 
         max_val = max(result[0] for result in results)
         min_val = min(result[1] for result in results)
         avg = sum(result[2] for result in results) / n
-        end_time2 = time.time()
+        end_time2 = time.perf_counter()
         time_taken2 = end_time2 - start_time2
 
-        print("\nWith threads:")
-        print(f"Max: {max_val}")
-        print(f"Min: {min_val}")
-        print(f"Average: {avg}")
-        print(f"Time taken: {time_taken2} seconds")
+        print("Task 3:")
+        print(f"Max value: {max_val}")
+        print(f"Min value: {min_val}")
+        print(f"Average value: {avg}")
+        print(f"Time taken to compute max, min, and average: {time_taken2*1000} milliseconds")
 
 if __name__ == "__main__":
         main()
