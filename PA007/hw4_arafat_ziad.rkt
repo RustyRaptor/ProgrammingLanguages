@@ -17,18 +17,23 @@
 ;       inserted-element: an inserted-elementent to insert
 ;       insertion-index: the index to insert the inserted-elementent at
 ;
-; Returns: 
+; Returns:
 ;       A new list with inserted-element inserted at position insertion-index
 (define (insert-at input-list inserted-element insertion-index)
-        (cond 
+        (cond
+                ; If the insertion index = 0 append it to the beginning with cons.
                 [(= insertion-index 0) (cons inserted-element input-list)]
+                ; If its empty just return a list with the element
                 [(null? input-list) (list inserted-element)]
-                [else 
-                        (cons (car input-list)
-                                (insert-at 
+                ; Else concat the head with a recursive call on the tail. 
+                [else
+                        (cons
+                                (car input-list)
+                                (insert-at
                                         (cdr input-list)
-                                        inserted-element 
-                                        (sub1 insertion-index))
+                                        inserted-element
+                                        (sub1 insertion-index)
+                                )
                         )
                 ]
         )
