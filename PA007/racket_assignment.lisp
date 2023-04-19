@@ -24,9 +24,13 @@
 
 ; Solution using Logarithms to check if its a power. 
 ; Runs in O(1) time as opposed to O(log n)
-(define (power-four? n)
-        (let ([log-base-4 (/ (log n) (log 4))])
-                (and (integer? log-base-4) (>= n 1)))
+; Params:
+;       n
+; Returns: 
+;       A new list with inserted-element inserted at position insertion-index
+(define (power-four? checked-number)
+        (let ([log-base-4 (/ (log checked-number) (log 4))])
+                (and (integer? log-base-4) (>= checked-number 1)))
 )
 
 ; Params:
@@ -80,8 +84,14 @@
         )
 )
 
-(define (is-divisible? checked-number divisor)
 
+; Checks a number is divisible by a given divisor
+; Params:
+;       checked-number: the number to check divisibility of
+;       divisor: the divisor to check it by
+; Returns: 
+;       #t if it is divisible else #f
+(define (is-divisible? checked-number divisor)
         (if (= divisor 1)
                 #f
                 (if (= (remainder checked-number divisor) 0)
@@ -92,6 +102,12 @@
         )
 )
 
+; Checks if a number is prime
+; Params:
+;       checked-number: the number to check primeness of
+; Returns: 
+;       0 if it's prime
+;       else 1
 (define (prime? checked-number)
         ; if checked-number <= 1
         (if (<= checked-number 1)
