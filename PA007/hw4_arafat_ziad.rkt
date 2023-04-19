@@ -146,6 +146,7 @@
 (newline)
 
 ; Test cases for prime?
+(display "PRIME")
 (display (prime? 2)) ; 0
 (newline)
 (display (prime? 3)) ; 0
