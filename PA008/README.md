@@ -1,12 +1,8 @@
 
 ## Usage
-
-### Testing the code
-1. Execute the code for N=4,8,16
+1. Build and execute the Java program
    1. `make`
-
-
-
-### Executing The python program alone
-1. `python3 concurrency.py N`
-   1. Where N is the size of the NxN matrix
+2. Build and execute the Ada program.
+   1. `make run_ada`
+3. Clean all the generated files
+   1. `make clean`
