@@ -19,7 +19,7 @@ run_ada: grade_distribution.adb
 	./grade_distribution
 
 clean:
-	rm *.o
-	rm *.ali
-	rm grade_distribution
-	rm pa008/*.class
+	rm -rf *.o
+	rm -rf *.ali
+	rm -rf grade_distribution
+	rm -rf pa008/*.class
