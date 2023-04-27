@@ -1,7 +1,15 @@
-package com.pa008;
+/**
+ * Ziad Arafat
+ * 04/26/2023
+ */
 
-import com.pa008.Natural;
+package pa008;
 
+
+/**
+ * Class to store natural numbers and throw exceptions equivalent to Adas 
+ * Contraint errors that natural types can throw. 
+ */
 public class Natural {
         private int value;
 

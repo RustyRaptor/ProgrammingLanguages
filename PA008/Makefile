@@ -5,10 +5,21 @@ reset=`tput sgr0`
 # Variables so its easy to make changes if I need to (it ended up being helpful)
 
 all: test
-test: concurrency.py
-	@echo "${green}For N = 4${reset}"
-	python3 concurrency.py 4
-	@echo "${green}For N = 8${reset}"
-	python3 concurrency.py 8
-	@echo "${green}For N = 16${reset}"
-	python3 concurrency.py 16
+
+test: pa008/App.java pa008/Natural.java
+	@echo "${green} Building and executing Java code ${reset}"
+	javac -cp pa008/ pa008/*java
+	java -cp . pa008/App
+
+run_ada: grade_distribution.adb
+	@echo "${green} Building and executing Ada code ${reset}"
+	gcc -c grade_distribution.adb
+	gnatbind grade_distribution
+	gnatlink grade_distribution
+	./grade_distribution
+
+clean:
+	rm *.o
+	rm *.ali
+	rm grade_distribution
+	rm pa008/*.class
